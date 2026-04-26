@@ -25,6 +25,10 @@ if(APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS} -fno-rtti")
 endif()
 
+if(ANDROID)
+    add_compile_definitions(ZT_NO_PEER_METRICS)
+endif()
+
 file(GLOB node_srcs ../node/*.cpp)
 set(src_files
     ${node_srcs}

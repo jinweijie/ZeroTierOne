@@ -632,7 +632,7 @@ namespace {
             return -103;
         }
         
-        int retval = env->CallIntMethod(ref->packetSender, PacketSender_onSendPacketRequested_method, (jlong)localSocket, (jobject)remoteAddressObj, (jbyteArray)bufferObj, (jint)0);
+        int retval = env->CallIntMethod(ref->packetSender, PacketSender_onSendPacketRequested_method, (jlong)localSocket, (jobject)remoteAddressObj, (jbyteArray)bufferObj, (jint)ttl);
         if (env->ExceptionCheck()) {
             LOGE("Exception calling onSendPacketRequested");
             return -104;
@@ -862,6 +862,7 @@ JNIEXPORT jobject JNICALL Java_com_zerotier_sdk_Node_node_1init(
 //    assert(pathChecker != NULL);
 
     ZT_Node_Callbacks callbacks{};
+    callbacks.version = 0;
     callbacks.stateGetFunction = &StateGetFunction;
     callbacks.statePutFunction = &StatePutFunction;
     callbacks.wirePacketSendFunction = &WirePacketSendFunction;
