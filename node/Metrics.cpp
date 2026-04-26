@@ -15,7 +15,9 @@ namespace prometheus {
 namespace simpleapi {
 std::shared_ptr<Registry> registry_ptr = std::make_shared<Registry>();
 Registry& registry = *registry_ptr;
+#ifndef __ANDROID__
 SaveToFile saver;
+#endif
 }	// namespace simpleapi
 }	// namespace prometheus
 
