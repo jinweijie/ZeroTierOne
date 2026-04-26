@@ -27,9 +27,7 @@ endif()
 
 file(GLOB node_srcs ../node/*.cpp)
 set(src_files
-    ../ext/http-parser/http_parser.c
     ${node_srcs}
-    ../osdep/Http.cpp
     ../osdep/OSUtils.cpp
     jni/com_zerotierone_sdk_Node.cpp
     jni/ZT_jniutils.cpp
